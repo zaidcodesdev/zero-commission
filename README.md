@@ -1,17 +1,34 @@
-# zero_commission
+# Zero Commission
 
-A new Flutter project.
+A Flutter-based financial calculator app designed to make common financial calculations simple, fast, and easy to understand.
+
+## Features
+
+-  SIP Calculator
+-  FD Calculator
+-  RD Calculator
+-  GST Calculator
+-  Eligibility Calculator
+-  EMI Calculator
+-  Dynamic calculation results
+-  Visual graphs and charts
+-  Clean and user-friendly interface
+
+## Built With
+
+- Flutter
+- Dart
+- Material Design
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+Make sure you have Flutter installed on your system.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+### Installation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Clone the repository:
+
+```bash
+git clone https://github.com/zaidcodesdev/zero-commission.git
