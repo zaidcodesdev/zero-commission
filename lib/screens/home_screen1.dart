@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:zero_commission/screens/report_screen.dart';
 import 'More_options_screen.dart';
+import '../widgets/cibil_score_meter.dart';
+import 'accounts_screen.dart';
+import 'available_offers_screen.dart';
+import 'cibil_improve.dart';
+import 'profile_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen();
@@ -11,6 +17,7 @@ class HomeScreen extends StatelessWidget {
 
       body: SafeArea(
         child: SingleChildScrollView(
+          padding: EdgeInsets.only(bottom: 50),
           child: Column(
             children: [
               Padding(
@@ -60,9 +67,19 @@ class HomeScreen extends StatelessWidget {
 
                         SizedBox(width: 12),
 
-                        CircleAvatar(
-                          radius: 20,
-                          child: Icon(Icons.person),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ProfileScreen(),
+                              ),
+                            );
+                          },
+                          child: CircleAvatar(
+                            radius: 20,
+                            child: Icon(Icons.person),
+                          ),
                         ),
                       ],
                     ),
@@ -110,64 +127,9 @@ class HomeScreen extends StatelessWidget {
 
                         SizedBox(width: 10),
 
-                        Expanded(
-                          flex: 5,
-                          child: Column(
-                            mainAxisAlignment:
-                            MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                height: 70,
-                                width: double.infinity,
-                                child: CustomPaint(
-                                  painter: GraphPainter(),
-                                ),
-                              ),
-
-                              SizedBox(height: 4),
-
-                              Text(
-                                '786',
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFF1E9B68),
-                                ),
-                              ),
-
-                              SizedBox(height: 4),
-
-                              Text(
-                                'Out of 900',
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  color: Colors.black87,
-                                ),
-                              ),
-
-                              SizedBox(height: 12),
-
-                              Container(
-                                width: 110,
-                                height: 32,
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFF1E9B68),
-                                  borderRadius:
-                                  BorderRadius.circular(20),
-                                ),
-                                child: Text(
-                                  'GOOD',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        CibilScoreMeter(
+                          score: 786,
+                        )
                       ],
                     ),
 
@@ -227,8 +189,18 @@ class HomeScreen extends StatelessWidget {
 
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Image.asset(
-                  'assets/images/onboarding3_header.png',
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CibilImproveScreen(),
+                      ),
+                    );
+                  },
+                  child: Image.asset(
+                    'assets/images/onboarding3_header.png',
+                  ),
                 ),
               ),
               SizedBox(height: 10),
@@ -247,7 +219,12 @@ class HomeScreen extends StatelessWidget {
                     bottom: 20,
                     child: GestureDetector(
                       onTap: () {
-                        print('Check your offers clicked');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AvailableOffersScreen(),
+                          ),
+                        );
                       },
                       child: Container(
                         height: 55,
@@ -947,130 +924,139 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-
-              // Top section yahan banega
-
-              // Financial Health section
-
-              // Improve Your CIBIL section
-
-              // Finance Overview section
-
-              // Recent Activity section
-
-              // Loan Applications section
-
-              // Need Help section
             ],
           ),
         ),
       ),
 
-      bottomNavigationBar: Container(
-        height: 62,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(35),
-            topRight: Radius.circular(35),
+      bottomNavigationBar:  SafeArea(
+        top: false,
+        child: Container(
+          height: 62,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(35),
+              topRight: Radius.circular(35),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 10,
+                offset: Offset(0, -2),
+              ),
+            ],
           ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 10,
-              offset: Offset(0, -2),
-            ),
-          ],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.home,
-                  color: Color(0xFF356AC3),
-                  size: 30,
-                ),
-                SizedBox(height: 1),
-                Text(
-                  'Home',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Color(0xFF356AC3),
-                  ),
-                ),
-              ],
-            ),
-
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.note_add_outlined,
-                  color: Colors.grey,
-                  size: 30,
-                ),
-                SizedBox(height: 1),
-                Text(
-                  'Accounts',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey,
-                  ),
-                ),
-              ],
-            ),
-
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.trending_up_outlined,
-                  color: Colors.grey,
-                  size: 30,
-                ),
-                SizedBox(height: 1),
-                Text(
-                  'Reports',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey,
-                  ),
-                ),
-              ],
-            ),
-
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MoreScreen(),
-                  ),
-                );
-              },
-              child: Column(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
-                    Icons.grid_view_outlined,
-                    color: Colors.grey,
+                    Icons.home,
+                    color: Color(0xFF356AC3),
                     size: 30,
                   ),
                   SizedBox(height: 1),
                   Text(
-                    'More',
+                    'Home',
                     style: TextStyle(
                       fontSize: 12,
-                      color: Colors.grey,
+                      color: Color(0xFF356AC3),
                     ),
                   ),
                 ],
               ),
-            ),
-          ],
+
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AccountsScreen(),
+                    ),
+                  );
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.note_add_outlined,
+                      color: Colors.grey,
+                      size: 30,
+                    ),
+                    SizedBox(height: 1),
+                    Text(
+                      'Accounts',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ReportsScreen(),
+                    ),
+                  );
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.trending_up_outlined,
+                      color: Colors.grey,
+                      size: 30,
+                    ),
+                    SizedBox(height: 1),
+                    Text(
+                      'Reports',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MoreScreen(),
+                    ),
+                  );
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.grid_view_outlined,
+                      color: Colors.grey,
+                      size: 30,
+                    ),
+                    SizedBox(height: 1),
+                    Text(
+                      'More',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

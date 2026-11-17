@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zero_commission/screens/home_screen1.dart';
 import 'onboarding_screen3.dart';
 
 
@@ -19,11 +20,21 @@ class OnboardingScreen2 extends StatelessWidget {
             children: [
               Align(
                 alignment: Alignment.topRight,
-                child: Text(
-                  "Skip",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Color(0xff0752E3),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomeScreen(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Skip",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Color(0xff0752E3),
+                    ),
                   ),
                 ),
               ),

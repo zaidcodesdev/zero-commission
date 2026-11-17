@@ -185,652 +185,654 @@ class _FDCalculatorState extends State<FDCalculator> {
         ),
       ),
 
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-
-            // FD HERO SECTION
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 18,
-                vertical: 10,
-              ),
-              child: SizedBox(
-                width: double.infinity,
-                height: 170,
-                child: Stack(
-                  children: [
-
-                    // TEXT
-                    Positioned(
-                      left: 0,
-                      top: 5,
-                      right: 125,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-
-                          Text(
-                            'Calculate Your',
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF06245F),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+        
+              // FD HERO SECTION
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 18,
+                  vertical: 10,
+                ),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 170,
+                  child: Stack(
+                    children: [
+        
+                      // TEXT
+                      Positioned(
+                        left: 0,
+                        top: 5,
+                        right: 125,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+        
+                            Text(
+                              'Calculate Your',
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF06245F),
+                              ),
                             ),
-                          ),
-
-                          Text(
-                            'Fixed Deposit',
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF1759F5),
+        
+                            Text(
+                              'Fixed Deposit',
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF1759F5),
+                              ),
                             ),
-                          ),
-
-                          Text(
-                            'Returns',
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF06245F),
+        
+                            Text(
+                              'Returns',
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF06245F),
+                              ),
                             ),
-                          ),
-
-                          SizedBox(height: 10),
-
-                          Text(
-                            'Plan your savings better with our FD '
-                                'calculator. See your maturity amount '
-                                'and interest earnings instantly.',
-                            style: TextStyle(
-                              fontSize: 13,
-                              height: 1.45,
-                              color: Color(0xFF596273),
+        
+                            SizedBox(height: 10),
+        
+                            Text(
+                              'Plan your savings better with our FD '
+                                  'calculator. See your maturity amount '
+                                  'and interest earnings instantly.',
+                              style: TextStyle(
+                                fontSize: 13,
+                                height: 1.45,
+                                color: Color(0xFF596273),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-
-                    // YOUR FD IMAGE
-                    Positioned(
-                      right: -5,
-                      top: 5,
-                      child: Image.asset(
-                        'assets/images/fd_calculator.png',
-                        width: 135,
-                        height: 150,
-                        fit: BoxFit.contain,
+        
+                      // YOUR FD IMAGE
+                      Positioned(
+                        right: -5,
+                        top: 5,
+                        child: Image.asset(
+                          'assets/images/fd_calculator.png',
+                          width: 135,
+                          height: 150,
+                          fit: BoxFit.contain,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-
-            SizedBox(height: 10),
-            SizedBox(height: 8),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18),
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(14),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-
-                    // DEPOSIT AMOUNT
-                    Row(
-                      children: [
-
-                        _fdIconBox(Icons.currency_rupee),
-
-                        const SizedBox(width: 10),
-
-                        const Expanded(
-                          child: Text(
-                            'Deposit Amount',
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xFF263449),
-                            ),
-                          ),
-                        ),
-
-                        _fdValueBox(
-                          '₹ ${depositAmount.toStringAsFixed(0)}',
-                        ),
-                      ],
-                    ),
-
-                    const SizedBox(height: 18),
-
-                    // DEPOSIT AMOUNT SLIDER
-                    SliderTheme(
-                      data: SliderTheme.of(context).copyWith(
-                        trackHeight: 3,
-                        thumbShape: const RoundSliderThumbShape(
-                          enabledThumbRadius: 6,
-                        ),
-                        overlayShape: SliderComponentShape.noOverlay,
-                        activeTrackColor: const Color(0xFF1760F5),
-                        inactiveTrackColor: const Color(0xFFE1E5EC),
-                        thumbColor: const Color(0xFF1760F5),
-                      ),
-                      child:Slider(
-                        value: depositAmount,
-                        min: 1000,
-                        max: 10000000,
-                        onChanged: (value) {
-                          setState(() {
-                            depositAmount = value;
-                          });
-
-                          _calculateFD();
-                        },
-                      ),
-                    ),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-
-                        Text(
-                          '₹1,000',
-                          style: TextStyle(
-                            fontSize: 8,
-                            color: Color(0xFF9AA2B1),
-                          ),
-                        ),
-
-                        Text(
-                          '₹1,00,00,000+',
-                          style: TextStyle(
-                            fontSize: 8,
-                            color: Color(0xFF9AA2B1),
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    const SizedBox(height: 24),
-
-                    // INTEREST RATE
-                    Row(
-                      children: [
-
-                        _fdIconBox(Icons.percent),
-
-                        const SizedBox(width: 10),
-
-                        const Expanded(
-                          child: Text(
-                            'Interest Rate (%\np.a.)',
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xFF263449),
-                            ),
-                          ),
-                        ),
-
-                        _fdValueBox(
-                          '${interestRate.toStringAsFixed(1)} %',
-                        ),
-                      ],
-                    ),
-
-                    const SizedBox(height: 18),
-
-                    SliderTheme(
-                      data: SliderTheme.of(context).copyWith(
-                        trackHeight: 3,
-                        thumbShape: const RoundSliderThumbShape(
-                          enabledThumbRadius: 6,
-                        ),
-                        overlayShape: SliderComponentShape.noOverlay,
-                        activeTrackColor: const Color(0xFF1760F5),
-                        inactiveTrackColor: const Color(0xFFE1E5EC),
-                        thumbColor: const Color(0xFF1760F5),
-                      ),
-                      child:Slider(
-                        value: interestRate,
-                        min: 1,
-                        max: 15,
-                        onChanged: (value) {
-                          setState(() {
-                            interestRate = value;
-                          });
-
-                          _calculateFD();
-                        },
-                      ),
-                    ),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-
-                        Text(
-                          '1%',
-                          style: TextStyle(
-                            fontSize: 8,
-                            color: Color(0xFF9AA2B1),
-                          ),
-                        ),
-
-                        Text(
-                          '15%',
-                          style: TextStyle(
-                            fontSize: 8,
-                            color: Color(0xFF9AA2B1),
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    const SizedBox(height: 24),
-
-                    // TENURE
-                    Row(
-                      children: [
-
-                        _fdIconBox(Icons.calendar_today_outlined),
-
-                        const SizedBox(width: 10),
-
-                        const Expanded(
-                          child: Text(
-                            'Tenure',
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xFF263449),
-                            ),
-                          ),
-                        ),
-
-                        _fdDropdownBox(
-                          '$tenureYears Years',
-                          onTap: () {
-                            showModalBottomSheet(
-                              context: context,
-                              builder: (context) {
-                                final options = List.generate(
-                                  10,
-                                      (index) => index + 1,
-                                );
-
-                                return SafeArea(
-                                  child: ListView(
-                                    shrinkWrap: true,
-                                    children: options.map((year) {
-                                      return ListTile(
-                                        title: Text('$year Year${year == 1 ? '' : 's'}'),
-                                        trailing: tenureYears == year
-                                            ? const Icon(
-                                          Icons.check,
-                                          color: Color(0xFF1760F5),
-                                        )
-                                            : null,
-                                        onTap: () {
-                                          setState(() {
-                                            tenureYears = year;
-                                          });
-
-                                          _calculateFD();
-
-                                          Navigator.pop(context);
-                                        },
-                                      );
-                                    }).toList(),
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-
-                    const SizedBox(height: 18),
-
-                    SliderTheme(
-                      data: SliderTheme.of(context).copyWith(
-                        trackHeight: 3,
-                        thumbShape: const RoundSliderThumbShape(
-                          enabledThumbRadius: 6,
-                        ),
-                        overlayShape: SliderComponentShape.noOverlay,
-                        activeTrackColor: const Color(0xFF1760F5),
-                        inactiveTrackColor: const Color(0xFFE1E5EC),
-                        thumbColor: const Color(0xFF1760F5),
-                      ),
-                      child:Slider(
-                        value: tenureYears.toDouble(),
-                        min: 1,
-                        max: 10,
-                        divisions: 9,
-                        onChanged: (value) {
-                          setState(() {
-                            tenureYears = value.round();
-                          });
-
-                          _calculateFD();
-                        },
-                      ),
-                    ),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-
-                        Text(
-                          '1 Year',
-                          style: TextStyle(
-                            fontSize: 8,
-                            color: Color(0xFF9AA2B1),
-                          ),
-                        ),
-
-                        Text(
-                          '10 Years',
-                          style: TextStyle(
-                            fontSize: 8,
-                            color: Color(0xFF9AA2B1),
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    const SizedBox(height: 24),
-
-                    // COMPOUNDING FREQUENCY
-                    Row(
-                      children: [
-
-                        _fdIconBox(Icons.sync),
-
-                        const SizedBox(width: 10),
-
-                        const Expanded(
-                          child: Text(
-                            'Compounding\nFrequency',
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xFF263449),
-                            ),
-                          ),
-                        ),
-
-                        _fdDropdownBox(
-                          compoundingFrequency,
-                          onTap: () {
-                            showModalBottomSheet(
-                              context: context,
-                              builder: (context) {
-                                final options = [
-                                  'Yearly',
-                                  'Half-Yearly',
-                                  'Quarterly',
-                                  'Monthly',
-                                ];
-
-                                return SafeArea(
-                                  child: ListView(
-                                    shrinkWrap: true,
-                                    children: options.map((option) {
-                                      return ListTile(
-                                        title: Text(option),
-                                        trailing: compoundingFrequency == option
-                                            ? const Icon(
-                                          Icons.check,
-                                          color: Color(0xFF1760F5),
-                                        )
-                                            : null,
-                                        onTap: () {
-                                          setState(() {
-                                            compoundingFrequency = option;
-                                          });
-
-                                          _calculateFD();
-
-                                          Navigator.pop(context);
-                                        },
-                                      );
-                                    }).toList(),
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-
-                    const SizedBox(height: 16),
-
-                    // DEPOSIT TYPE
-                    Row(
-                      children: [
-
-                        _fdIconBox(Icons.account_balance_outlined),
-
-                        const SizedBox(width: 10),
-
-                        const Expanded(
-                          child: Text(
-                            'Deposit Type',
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xFF263449),
-                            ),
-                          ),
-                        ),
-
-                        _fdDropdownBox(
-                          depositType,
-                          onTap: () {
-                            showModalBottomSheet(
-                              context: context,
-                              builder: (context) {
-                                final options = [
-                                  'Regular FD',
-                                  'Senior Citizen FD',
-                                ];
-
-                                return SafeArea(
-                                  child: ListView(
-                                    shrinkWrap: true,
-                                    children: options.map((option) {
-                                      return ListTile(
-                                        title: Text(option),
-                                        trailing: depositType == option
-                                            ? const Icon(
-                                          Icons.check,
-                                          color: Color(0xFF1760F5),
-                                        )
-                                            : null,
-                                        onTap: () {
-                                          setState(() {
-                                            depositType = option;
-                                          });
-
-                                          _calculateFD();
-
-                                          Navigator.pop(context);
-                                        },
-                                      );
-                                    }).toList(),
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-
-                    const SizedBox(height: 20),
-
-                    // DID YOU KNOW
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFEFF4FF),
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                          color: const Color(0xFFD7E4FF),
-                        ),
-                      ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+        
+              SizedBox(height: 10),
+              SizedBox(height: 8),
+        
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18),
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+        
+                      // DEPOSIT AMOUNT
+                      Row(
                         children: [
-
-                          Container(
-                            width: 32,
-                            height: 32,
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              shape: BoxShape.circle,
-                            ),
-                            child: const Icon(
-                              Icons.lightbulb_outline,
-                              size: 18,
-                              color: Color(0xFF1760F5),
-                            ),
-                          ),
-
+        
+                          _fdIconBox(Icons.currency_rupee),
+        
                           const SizedBox(width: 10),
-
+        
                           const Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-
-                                Text(
-                                  'Did You Know?',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xFF0755D9),
-                                  ),
-                                ),
-
-                                SizedBox(height: 4),
-
-                                Text(
-                                  'Quarterly compounding can earn you '
-                                      'higher returns compared to annual '
-                                      'compounding.',
-                                  style: TextStyle(
-                                    fontSize: 9,
-                                    height: 1.35,
-                                    color: Color(0xFF596273),
-                                  ),
-                                ),
-                              ],
+                            child: Text(
+                              'Deposit Amount',
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF263449),
+                              ),
+                            ),
+                          ),
+        
+                          _fdValueBox(
+                            '₹ ${depositAmount.toStringAsFixed(0)}',
+                          ),
+                        ],
+                      ),
+        
+                      const SizedBox(height: 18),
+        
+                      // DEPOSIT AMOUNT SLIDER
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          trackHeight: 3,
+                          thumbShape: const RoundSliderThumbShape(
+                            enabledThumbRadius: 6,
+                          ),
+                          overlayShape: SliderComponentShape.noOverlay,
+                          activeTrackColor: const Color(0xFF1760F5),
+                          inactiveTrackColor: const Color(0xFFE1E5EC),
+                          thumbColor: const Color(0xFF1760F5),
+                        ),
+                        child:Slider(
+                          value: depositAmount,
+                          min: 1000,
+                          max: 10000000,
+                          onChanged: (value) {
+                            setState(() {
+                              depositAmount = value;
+                            });
+        
+                            _calculateFD();
+                          },
+                        ),
+                      ),
+        
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+        
+                          Text(
+                            '₹1,000',
+                            style: TextStyle(
+                              fontSize: 8,
+                              color: Color(0xFF9AA2B1),
+                            ),
+                          ),
+        
+                          Text(
+                            '₹1,00,00,000+',
+                            style: TextStyle(
+                              fontSize: 8,
+                              color: Color(0xFF9AA2B1),
                             ),
                           ),
                         ],
                       ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 20),
-            _fdResultSection(),
-            SizedBox(height: 28,),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: _fdFeatureItem(
-                      icon: Icons.lock_open_outlined,
-                      title: '100% Secure',
-                      description: 'Invest with RBI-regulated banks & NBFCs',
-                    ),
-                  ),
-
-                  Expanded(
-                    child: _fdFeatureItem(
-                      icon: Icons.trending_up,
-                      title: 'Best Interest Rates',
-                      description: 'Compare & choose from top FD schemes',
-                    ),
-                  ),
-
-                  Expanded(
-                    child: _fdFeatureItem(
-                      icon: Icons.calendar_month_outlined,
-                      title: 'Flexible Tenure',
-                      description: 'Choose tenure from 7 days to 10 years',
-                    ),
-                  ),
-
-                  Expanded(
-                    child: _fdFeatureItem(
-                      icon: Icons.show_chart,
-                      title: 'Assured Returns',
-                      description: 'Guaranteed returns with zero market risk',
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 40,),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 18),
-              child: Container(
-                width: double.infinity,
-                padding: EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 14,
-                ),
-                decoration: BoxDecoration(
-                  color: Color(0xFFEFF4FF),
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Icon(
-                      Icons.info_outline,
-                      size: 18,
-                      color: Color(0xFF1760F5),
-                    ),
-
-                    SizedBox(width: 12),
-
-                    Expanded(
-                      child: Text(
-                        'All calculations are estimates. Actual returns may vary based on bank policies.',
-                        style: TextStyle(
-                          fontSize: 13,
-                          height: 1.35,
-                          color: Color(0xFF174DB8),
+        
+                      const SizedBox(height: 24),
+        
+                      // INTEREST RATE
+                      Row(
+                        children: [
+        
+                          _fdIconBox(Icons.percent),
+        
+                          const SizedBox(width: 10),
+        
+                          const Expanded(
+                            child: Text(
+                              'Interest Rate (%\np.a.)',
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF263449),
+                              ),
+                            ),
+                          ),
+        
+                          _fdValueBox(
+                            '${interestRate.toStringAsFixed(1)} %',
+                          ),
+                        ],
+                      ),
+        
+                      const SizedBox(height: 18),
+        
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          trackHeight: 3,
+                          thumbShape: const RoundSliderThumbShape(
+                            enabledThumbRadius: 6,
+                          ),
+                          overlayShape: SliderComponentShape.noOverlay,
+                          activeTrackColor: const Color(0xFF1760F5),
+                          inactiveTrackColor: const Color(0xFFE1E5EC),
+                          thumbColor: const Color(0xFF1760F5),
                         ),
+                        child:Slider(
+                          value: interestRate,
+                          min: 1,
+                          max: 15,
+                          onChanged: (value) {
+                            setState(() {
+                              interestRate = value;
+                            });
+        
+                            _calculateFD();
+                          },
+                        ),
+                      ),
+        
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+        
+                          Text(
+                            '1%',
+                            style: TextStyle(
+                              fontSize: 8,
+                              color: Color(0xFF9AA2B1),
+                            ),
+                          ),
+        
+                          Text(
+                            '15%',
+                            style: TextStyle(
+                              fontSize: 8,
+                              color: Color(0xFF9AA2B1),
+                            ),
+                          ),
+                        ],
+                      ),
+        
+                      const SizedBox(height: 24),
+        
+                      // TENURE
+                      Row(
+                        children: [
+        
+                          _fdIconBox(Icons.calendar_today_outlined),
+        
+                          const SizedBox(width: 10),
+        
+                          const Expanded(
+                            child: Text(
+                              'Tenure',
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF263449),
+                              ),
+                            ),
+                          ),
+        
+                          _fdDropdownBox(
+                            '$tenureYears Years',
+                            onTap: () {
+                              showModalBottomSheet(
+                                context: context,
+                                builder: (context) {
+                                  final options = List.generate(
+                                    10,
+                                        (index) => index + 1,
+                                  );
+        
+                                  return SafeArea(
+                                    child: ListView(
+                                      shrinkWrap: true,
+                                      children: options.map((year) {
+                                        return ListTile(
+                                          title: Text('$year Year${year == 1 ? '' : 's'}'),
+                                          trailing: tenureYears == year
+                                              ? const Icon(
+                                            Icons.check,
+                                            color: Color(0xFF1760F5),
+                                          )
+                                              : null,
+                                          onTap: () {
+                                            setState(() {
+                                              tenureYears = year;
+                                            });
+        
+                                            _calculateFD();
+        
+                                            Navigator.pop(context);
+                                          },
+                                        );
+                                      }).toList(),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+        
+                      const SizedBox(height: 18),
+        
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          trackHeight: 3,
+                          thumbShape: const RoundSliderThumbShape(
+                            enabledThumbRadius: 6,
+                          ),
+                          overlayShape: SliderComponentShape.noOverlay,
+                          activeTrackColor: const Color(0xFF1760F5),
+                          inactiveTrackColor: const Color(0xFFE1E5EC),
+                          thumbColor: const Color(0xFF1760F5),
+                        ),
+                        child:Slider(
+                          value: tenureYears.toDouble(),
+                          min: 1,
+                          max: 10,
+                          divisions: 9,
+                          onChanged: (value) {
+                            setState(() {
+                              tenureYears = value.round();
+                            });
+        
+                            _calculateFD();
+                          },
+                        ),
+                      ),
+        
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+        
+                          Text(
+                            '1 Year',
+                            style: TextStyle(
+                              fontSize: 8,
+                              color: Color(0xFF9AA2B1),
+                            ),
+                          ),
+        
+                          Text(
+                            '10 Years',
+                            style: TextStyle(
+                              fontSize: 8,
+                              color: Color(0xFF9AA2B1),
+                            ),
+                          ),
+                        ],
+                      ),
+        
+                      const SizedBox(height: 24),
+        
+                      // COMPOUNDING FREQUENCY
+                      Row(
+                        children: [
+        
+                          _fdIconBox(Icons.sync),
+        
+                          const SizedBox(width: 10),
+        
+                          const Expanded(
+                            child: Text(
+                              'Compounding\nFrequency',
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF263449),
+                              ),
+                            ),
+                          ),
+        
+                          _fdDropdownBox(
+                            compoundingFrequency,
+                            onTap: () {
+                              showModalBottomSheet(
+                                context: context,
+                                builder: (context) {
+                                  final options = [
+                                    'Yearly',
+                                    'Half-Yearly',
+                                    'Quarterly',
+                                    'Monthly',
+                                  ];
+        
+                                  return SafeArea(
+                                    child: ListView(
+                                      shrinkWrap: true,
+                                      children: options.map((option) {
+                                        return ListTile(
+                                          title: Text(option),
+                                          trailing: compoundingFrequency == option
+                                              ? const Icon(
+                                            Icons.check,
+                                            color: Color(0xFF1760F5),
+                                          )
+                                              : null,
+                                          onTap: () {
+                                            setState(() {
+                                              compoundingFrequency = option;
+                                            });
+        
+                                            _calculateFD();
+        
+                                            Navigator.pop(context);
+                                          },
+                                        );
+                                      }).toList(),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+        
+                      const SizedBox(height: 16),
+        
+                      // DEPOSIT TYPE
+                      Row(
+                        children: [
+        
+                          _fdIconBox(Icons.account_balance_outlined),
+        
+                          const SizedBox(width: 10),
+        
+                          const Expanded(
+                            child: Text(
+                              'Deposit Type',
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF263449),
+                              ),
+                            ),
+                          ),
+        
+                          _fdDropdownBox(
+                            depositType,
+                            onTap: () {
+                              showModalBottomSheet(
+                                context: context,
+                                builder: (context) {
+                                  final options = [
+                                    'Regular FD',
+                                    'Senior Citizen FD',
+                                  ];
+        
+                                  return SafeArea(
+                                    child: ListView(
+                                      shrinkWrap: true,
+                                      children: options.map((option) {
+                                        return ListTile(
+                                          title: Text(option),
+                                          trailing: depositType == option
+                                              ? const Icon(
+                                            Icons.check,
+                                            color: Color(0xFF1760F5),
+                                          )
+                                              : null,
+                                          onTap: () {
+                                            setState(() {
+                                              depositType = option;
+                                            });
+        
+                                            _calculateFD();
+        
+                                            Navigator.pop(context);
+                                          },
+                                        );
+                                      }).toList(),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+        
+                      const SizedBox(height: 20),
+        
+                      // DID YOU KNOW
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFEFF4FF),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: const Color(0xFFD7E4FF),
+                          ),
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+        
+                            Container(
+                              width: 32,
+                              height: 32,
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(
+                                Icons.lightbulb_outline,
+                                size: 18,
+                                color: Color(0xFF1760F5),
+                              ),
+                            ),
+        
+                            const SizedBox(width: 10),
+        
+                            const Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+        
+                                  Text(
+                                    'Did You Know?',
+                                    style: TextStyle(
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF0755D9),
+                                    ),
+                                  ),
+        
+                                  SizedBox(height: 4),
+        
+                                  Text(
+                                    'Quarterly compounding can earn you '
+                                        'higher returns compared to annual '
+                                        'compounding.',
+                                    style: TextStyle(
+                                      fontSize: 9,
+                                      height: 1.35,
+                                      color: Color(0xFF596273),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+        
+              const SizedBox(height: 20),
+              _fdResultSection(),
+              SizedBox(height: 28,),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: _fdFeatureItem(
+                        icon: Icons.lock_open_outlined,
+                        title: '100% Secure',
+                        description: 'Invest with RBI-regulated banks & NBFCs',
+                      ),
+                    ),
+        
+                    Expanded(
+                      child: _fdFeatureItem(
+                        icon: Icons.trending_up,
+                        title: 'Best Interest Rates',
+                        description: 'Compare & choose from top FD schemes',
+                      ),
+                    ),
+        
+                    Expanded(
+                      child: _fdFeatureItem(
+                        icon: Icons.calendar_month_outlined,
+                        title: 'Flexible Tenure',
+                        description: 'Choose tenure from 7 days to 10 years',
+                      ),
+                    ),
+        
+                    Expanded(
+                      child: _fdFeatureItem(
+                        icon: Icons.show_chart,
+                        title: 'Assured Returns',
+                        description: 'Guaranteed returns with zero market risk',
                       ),
                     ),
                   ],
                 ),
               ),
-            ),
-            SizedBox(height: 25,)
-          ],
+              SizedBox(height: 40,),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 18),
+                child: Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 14,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Color(0xFFEFF4FF),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.info_outline,
+                        size: 18,
+                        color: Color(0xFF1760F5),
+                      ),
+        
+                      SizedBox(width: 12),
+        
+                      Expanded(
+                        child: Text(
+                          'All calculations are estimates. Actual returns may vary based on bank policies.',
+                          style: TextStyle(
+                            fontSize: 13,
+                            height: 1.35,
+                            color: Color(0xFF174DB8),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 25,)
+            ],
+          ),
         ),
       ),
     );

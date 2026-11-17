@@ -24,9 +24,38 @@ class OnboardingScreen3 extends StatelessWidget {
 
               SizedBox(height: 15),
 
-              Image.asset(
-                'assets/images/onboarding3_heading.png',
-                width: 350,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 22),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Powerful',
+                      style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Text(
+                      'Financial Tools',
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF2563EB),
+                        height: 1
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      'Calculate, plan and make smarter\nfinancial decisions with ease.',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: Color(0xFF6B7280),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(height: 5),
 
@@ -37,17 +66,32 @@ class OnboardingScreen3 extends StatelessWidget {
                   height: 380,
                 ),
               ),
-              SizedBox(height: 25,),
+              SizedBox(height: 30,),
 
               Center(
                 child: Transform.translate(
                   offset: Offset(0, -25),
-                  child: Image.asset(
-                    'assets/images/onboarding3_bottom.png',
-
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.verified_user_outlined,
+                        color: Color(0xFF2563EB),
+                        size: 16,
+                      ),
+                      SizedBox(width: 5),
+                      Text(
+                        'All tools are 100% free to use',
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: Color(0xFF4B5563),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

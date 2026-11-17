@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:zero_commission/screens/accounts_screen.dart';
+import 'package:zero_commission/screens/affordability_calculator.dart';
+import 'package:zero_commission/screens/report_screen.dart';
 import 'emi_calculator.dart';
 import 'eligibility_calculator.dart';
 import 'home_screen1.dart';
@@ -6,6 +9,11 @@ import 'rd_calculator.dart';
 import 'gst_calculator.dart';
 import 'sip_calculator.dart';
 import 'fd_calculator.dart';
+import 'bt_calculator.dart';
+import 'apply_for_loan_screen.dart';
+import 'apply_for_car_loan.dart';
+import 'apply_for_business_loan.dart';
+import 'apply_for_card.dart';
 
 class MoreScreen extends StatelessWidget {
   MoreScreen();
@@ -315,58 +323,78 @@ class MoreScreen extends StatelessWidget {
                       ),
                     ),
 
-                    Column(
-                      children: [
-                        Container(
-                          width: 58,
-                          height: 58,
-                          decoration: BoxDecoration(
-                            color: Color(0xFFFFF3E8),
-                            shape: BoxShape.circle,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>  AffordabilityCalculator(),
                           ),
-                          child: Image.asset(
-                          "assets/images/more_screen_Affordability_logo.png"
+                        );
+                      },
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 58,
+                            height: 58,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFFFF3E8),
+                              shape: BoxShape.circle,
+                            ),
+                            child: Image.asset(
+                            "assets/images/more_screen_Affordability_logo.png"
+                            ),
                           ),
-                        ),
 
-                        SizedBox(height: 6),
+                          SizedBox(height: 6),
 
-                        Text(
-                          'Affordability\nCalculator',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 10,
-                            color: Color(0xFF374151),
+                          Text(
+                            'Affordability\nCalculator',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: Color(0xFF374151),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
 
-                    Column(
-                      children: [
-                        Container(
-                          width: 58,
-                          height: 58,
-                          decoration: BoxDecoration(
-                            color: Color(0xFFF3ECFF),
-                            shape: BoxShape.circle,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => btCalculator()
                           ),
-                          child: Image.asset(
-                           "assets/images/more_screen_BT_calculator.png"
+                        );
+                      },
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 58,
+                            height: 58,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFF3ECFF),
+                              shape: BoxShape.circle,
+                            ),
+                            child: Image.asset(
+                             "assets/images/more_screen_BT_calculator.png"
+                            ),
                           ),
-                        ),
 
-                        SizedBox(height: 6),
+                          SizedBox(height: 6),
 
-                        Text(
-                          'BT\nCalculator',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 10,
-                            color: Color(0xFF374151),
+                          Text(
+                            'BT\nCalculator',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: Color(0xFF374151),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -912,7 +940,12 @@ class MoreScreen extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
                         child: GestureDetector(
                           onTap: () {
-                            print('Home Loan Apply Now clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ApplyForLoanScreen(),
+                              ),
+                            );
                           },
                           child: Container(
                             width: double.infinity,
@@ -1228,7 +1261,12 @@ class MoreScreen extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
                         child: GestureDetector(
                           onTap: () {
-                            print('Car Loan Apply Now clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ApplyForCarLoanScreen(),
+                              ),
+                            );
                           },
                           child: Container(
                             width: double.infinity,
@@ -1544,7 +1582,12 @@ class MoreScreen extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
                         child: GestureDetector(
                           onTap: () {
-                            print('Business Loan Apply Now clicked');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ApplyForBusinessLoanScreen(),
+                              ),
+                            );
                           },
                           child: Container(
                             width: double.infinity,
@@ -1612,95 +1655,105 @@ class MoreScreen extends StatelessWidget {
 
                     SizedBox(height: 20),
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/more_screen_travel_card.png',
-                              width: 72,
-                              height: 125,
-                              fit: BoxFit.contain,
-                            ),
-
-                            SizedBox(height: 10),
-
-                            Text(
-                              'Travel Card',
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: Color(0xFF172033),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ApplyForCardScreen(),
+                          ),
+                        );
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            children: [
+                              Image.asset(
+                                'assets/images/more_screen_travel_card.png',
+                                width: 72,
+                                height: 125,
+                                fit: BoxFit.contain,
                               ),
-                            ),
-                          ],
-                        ),
 
-                        Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/more_screen_shopping_card.png',
-                              width: 72,
-                              height: 125,
-                              fit: BoxFit.contain,
-                            ),
+                              SizedBox(height: 10),
 
-                            SizedBox(height: 10),
-
-                            Text(
-                              'Shopping card',
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: Color(0xFF172033),
+                              Text(
+                                'Travel Card',
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: Color(0xFF172033),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
+                            ],
+                          ),
 
-                        Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/more_screen_platinum_card.png',
-                              width: 72,
-                              height: 125,
-                              fit: BoxFit.contain,
-                            ),
-
-                            SizedBox(height: 10),
-
-                            Text(
-                              'Platinum Card',
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: Color(0xFF172033),
+                          Column(
+                            children: [
+                              Image.asset(
+                                'assets/images/more_screen_shopping_card.png',
+                                width: 72,
+                                height: 125,
+                                fit: BoxFit.contain,
                               ),
-                            ),
-                          ],
-                        ),
 
-                        Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/more_screen_lifetime_card.png',
-                              width: 72,
-                              height: 125,
-                              fit: BoxFit.contain,
-                            ),
+                              SizedBox(height: 10),
 
-                            SizedBox(height: 10),
-
-                            Text(
-                              'Lite Time Free\nCard',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: Color(0xFF172033),
+                              Text(
+                                'Shopping card',
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: Color(0xFF172033),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+
+                          Column(
+                            children: [
+                              Image.asset(
+                                'assets/images/more_screen_platinum_card.png',
+                                width: 72,
+                                height: 125,
+                                fit: BoxFit.contain,
+                              ),
+
+                              SizedBox(height: 10),
+
+                              Text(
+                                'Platinum Card',
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: Color(0xFF172033),
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          Column(
+                            children: [
+                              Image.asset(
+                                'assets/images/more_screen_lifetime_card.png',
+                                width: 72,
+                                height: 125,
+                                fit: BoxFit.contain,
+                              ),
+
+                              SizedBox(height: 10),
+
+                              Text(
+                                'Lite Time Free\nCard',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: Color(0xFF172033),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -1775,123 +1828,110 @@ class MoreScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: Container(
-        height: 62,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(35),
-            topRight: Radius.circular(35),
+
+      bottomNavigationBar: SafeArea(
+        top: false,
+        child: Container(
+          height: 62,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(35),
+              topRight: Radius.circular(35),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 10,
+                offset: Offset(0, -2),
+              ),
+            ],
           ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 10,
-              offset: Offset(0, -2),
-            ),
-          ],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => HomeScreen(),
-                  ),
-                );
-              },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.home,
-                    color: Colors.grey,
-                    size: 30,
-                  ),
-                  SizedBox(height: 1),
-                  Text(
-                    'Home',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomeScreen(),
                     ),
-                  ),
-                ],
+                  );
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.home, color: Colors.grey, size: 30),
+                    SizedBox(height: 1),
+                    Text('Home', style: TextStyle(fontSize: 12, color: Colors.grey)),
+                  ],
+                ),
               ),
-            ),
 
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.note_add_outlined,
-                  color: Colors.grey,
-                  size: 30,
-                ),
-                SizedBox(height: 1),
-                Text(
-                  'Accounts',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey,
-                  ),
-                ),
-              ],
-            ),
-
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.trending_up_outlined,
-                  color: Colors.grey,
-                  size: 30,
-                ),
-                SizedBox(height: 1),
-                Text(
-                  'Reports',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey,
-                  ),
-                ),
-              ],
-            ),
-
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MoreScreen(),
-                  ),
-                );
-              },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.grid_view_outlined,
-                    color:  Color(0xFF356AC3),
-                    size: 30,
-                  ),
-                  SizedBox(height: 1),
-                  Text(
-                    'More',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color:  Color(0xFF356AC3),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AccountsScreen(),
                     ),
-                  ),
-                ],
+                  );
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.note_add_outlined, color: Colors.grey, size: 30),
+                    SizedBox(height: 1),
+                    Text('Accounts', style: TextStyle(fontSize: 12, color: Colors.grey)),
+                  ],
+                ),
               ),
-            ),
-          ],
+
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ReportsScreen(),
+                    ),
+                  );
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.trending_up_outlined, color: Colors.grey, size: 30),
+                    SizedBox(height: 1),
+                    Text('Reports', style: TextStyle(fontSize: 12, color: Colors.grey)),
+                  ],
+                ),
+              ),
+
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MoreScreen(),
+                    ),
+                  );
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.grid_view_outlined, color: Color(0xFF356AC3), size: 30),
+                    SizedBox(height: 1),
+                    Text('More', style: TextStyle(fontSize: 12, color: Color(0xFF356AC3))),
+                  ],
+                ),
+              ),
+
+            ],
+          ),
         ),
       ),
+
     );
   }
 }

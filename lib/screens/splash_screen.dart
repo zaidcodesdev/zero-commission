@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'onboarding_screen.dart';
 import 'dart:async';
+import 'package:flutter/services.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -19,6 +20,8 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
 
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 3),
@@ -32,6 +35,23 @@ class _SplashScreenState extends State<SplashScreen>
     _controller.forward();
 
     Timer(Duration(seconds: 3), () {
+      SystemChrome.setEnabledSystemUIMode(
+        SystemUiMode.manual,
+        overlays: [
+          SystemUiOverlay.top,
+          SystemUiOverlay.bottom,
+        ],
+      );
+
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          systemNavigationBarColor: Colors.white,
+          systemNavigationBarIconBrightness: Brightness.light,
+          systemNavigationBarDividerColor: Colors.white,
+          systemNavigationBarContrastEnforced: false,
+        ),
+      );
+
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(

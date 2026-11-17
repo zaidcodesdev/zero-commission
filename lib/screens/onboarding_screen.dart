@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'onboarding_screen2.dart';
+import 'package:flutter/services.dart';
+import 'home_screen1.dart';
 
 class OnboardingScreen extends StatelessWidget {
    OnboardingScreen();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle(
+          systemNavigationBarColor: Colors.white,
+          systemNavigationBarIconBrightness: Brightness.dark,
+          systemNavigationBarDividerColor: Colors.white,
+          systemNavigationBarContrastEnforced: false,
+        ),
+    child:  Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
@@ -21,11 +30,21 @@ class OnboardingScreen extends StatelessWidget {
               // Skip Button
               Align(
                 alignment: Alignment.topRight,
-                child: Text(
-                  "Skip",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Color(0xff1F5BBF),
+                child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomeScreen(),
+                        ),
+                      );
+                    },
+                  child: Text(
+                    "Skip",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Color(0xff1F5BBF),
+                    ),
                   ),
                 ),
               ),
@@ -144,6 +163,7 @@ class OnboardingScreen extends StatelessWidget {
           ),
         ),
       ),
+    ),
     );
   }
 }
